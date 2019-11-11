@@ -217,7 +217,7 @@
              style="background: #fff; padding: 40px 80px; margin: 30px; border: 7px solid #ccc;">
              会员注册USER REGISTER
             <!-- onsubmit : 表单提交时间 ， 可以控制表单的提交 -->
-            <form class="form-horizontal" onsubmit="return checkForm()" action="/user/registerSure.do" method="post"
+            <form class="form-horizontal" onsubmit="return checkForm()" action="/user/register.do" method="post"
                   style="margin-top: 5px;">
                 <div class="form-group">
                     <label for="username" class="col-sm-2 control-label">用户名</label>

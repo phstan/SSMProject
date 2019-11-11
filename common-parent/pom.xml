@@ -12,11 +12,11 @@
         <module>edu-dao</module>
         <module>edu-service</module>
         <module>edu-manager</module>
-        <module>edu-api</module>
     </modules>
 
     <!--父工程 pom-->
     <packaging>pom</packaging>
+
 
     <!--公共的版本号管理-->
     <properties>

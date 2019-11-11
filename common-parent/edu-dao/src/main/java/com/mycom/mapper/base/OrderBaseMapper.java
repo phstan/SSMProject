@@ -13,4 +13,6 @@ public interface OrderBaseMapper<T> {
     public int delete(String[] array);
 
     public int deleteAll(String username);
+
+
 }

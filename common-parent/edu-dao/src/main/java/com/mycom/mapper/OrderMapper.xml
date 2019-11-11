@@ -5,7 +5,7 @@
 <mapper namespace="com.mycom.mapper.OrderMapper">
 
     <insert id="add" parameterType="com.mycom.model.Order">
-        INSERT INTO `order` VALUES (#{oid} ,#{username} ,#{pid} ,#{num})
+        INSERT INTO `order`(username,pid,num) VALUES (#{username} ,#{pid} ,#{num})
     </insert>
     <select id="selectOne" parameterType="com.mycom.model.Order" resultType="com.mycom.model.Order">
         SELECT * FROM `order`

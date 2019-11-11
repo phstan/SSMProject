@@ -1,8 +1,9 @@
 package com.mycom.model;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class Order {
+public class Order implements Serializable {
     private String oid;
     private String username;
     private String pid;
@@ -47,5 +48,16 @@ public class Order {
 
     public void setProductList(List<Product> productList) {
         this.productList = productList;
+    }
+
+    @Override
+    public String toString() {
+        return "Order{" +
+                "oid='" + oid + '\'' +
+                ", username='" + username + '\'' +
+                ", pid='" + pid + '\'' +
+                ", num=" + num +
+                ", productList=" + productList +
+                '}';
     }
 }

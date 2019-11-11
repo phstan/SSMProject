@@ -1,10 +1,13 @@
 package com.mycom.service.impl;
 
 import com.mycom.model.Order;
+
+import com.mycom.model.Product;
 import com.mycom.service.base.OrderBaseServiceImpl;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.UUID;
 
 
@@ -16,7 +19,6 @@ public class OrderServiceImpl extends OrderBaseServiceImpl<Order> {
     public String add(Order order) {
         Order orderOne = orderMapper.selectOne(order);
         if(orderOne==null){
-            order.setOid(UUID.randomUUID().toString());
             int i = orderMapper.add(order);
             return i == 0 ? "fail" : "success";
         }else {
@@ -44,4 +46,8 @@ public class OrderServiceImpl extends OrderBaseServiceImpl<Order> {
         int i = orderMapper.deleteAll(username);
         return i==0?"fail":"success";
     }
+
+
+
+
 }

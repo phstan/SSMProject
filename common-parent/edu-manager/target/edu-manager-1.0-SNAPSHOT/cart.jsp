@@ -123,6 +123,24 @@
         })
     })
     </script>
+    <script>
+        $(function () {
+            $("#but1").click(function() {
+                var oIds = 'oid=' ;
+                $.each( $(".aloneCheck:checked") , function(){
+
+                    var oid = $(this).val() ;
+
+                    oIds += oid+","
+                });
+                oIds = oIds.substring(0 , oIds.length-1)
+                window.location.href = "/shop/findOrder.do?"+ oIds
+            });
+        })
+
+
+
+    </script>
 </head>
 
 <body>
@@ -146,8 +164,6 @@
                     <th>小计</th>
                     <th>操作</th>
                 </tr>
-
-
                 <c:forEach items="${cartList}" var="cartList">
                     <tr class="active">
                         <td width="60">
@@ -198,14 +214,10 @@
         <div style="text-align:right;margin-top:10px;margin-bottom:10px;">
             <button type="button" id="del" name="del" value="删除" class="button_add" >删除</button>
             <a href="javascript:delete_All('/shop/deleteALLCart.do');"title="删除">清空购物车 </a>
-            <a href="order_info.jsp">
-                <input type="submit" width="100" value="提交订单" name="submit" border="0"
-                       style="background: url('${pageContext.request.contextPath}/images/register.gif') no-repeat scroll 0 0 rgba(0, 0, 0, 0);
-                               height:35px;width:100px;color:white;">
-            </a>
+            <button type="button" id="but1" name="but1" value="提交订单" class="button_add">提交订单</button>
+
         </div>
     </div>
-
 </div>
 
 <!-- 引入footer.jsp -->

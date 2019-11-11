@@ -1,6 +1,8 @@
 package com.mycom.model;
 
-public class Product {
+import java.io.Serializable;
+
+public class Product implements Serializable {
     private String pid;
     private String pname;
     private Double market_price;
@@ -118,6 +120,25 @@ public class Product {
 
     public void setOid(String oid) {
         this.oid = oid;
+    }
+
+    @Override
+    public String toString() {
+        return "Product{" +
+                "pid='" + pid + '\'' +
+                ", pname='" + pname + '\'' +
+                ", market_price=" + market_price +
+                ", shop_price=" + shop_price +
+                ", pimage='" + pimage + '\'' +
+                ", pdate='" + pdate + '\'' +
+                ", is_hot=" + is_hot +
+                ", pdesc='" + pdesc + '\'' +
+                ", pflag=" + pflag +
+                ", num=" + num +
+                ", subtotal=" + subtotal +
+                ", oid='" + oid + '\'' +
+                ", cid='" + cid + '\'' +
+                '}';
     }
 }
 	
