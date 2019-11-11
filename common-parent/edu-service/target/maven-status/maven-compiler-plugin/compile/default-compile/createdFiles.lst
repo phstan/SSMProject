@@ -1,0 +1,12 @@
+com\mycom\service\base\OrderBaseServiceImpl.class
+com\mycom\service\impl\CategoryServiceImpl.class
+com\mycom\service\base\IOrderBaseService.class
+com\mycom\service\base\IProductBaseService.class
+com\mycom\service\impl\OrderServiceImpl.class
+com\mycom\service\base\CategoryBaseServiceImpl.class
+com\mycom\service\base\ProductBaseServiceImpl.class
+com\mycom\service\base\UserBaseServiceImpl.class
+com\mycom\service\base\ICategoryBaseService.class
+com\mycom\service\base\IUserBaseService.class
+com\mycom\service\impl\ProductServiceImpl.class
+com\mycom\service\impl\UserServiceImpl.class

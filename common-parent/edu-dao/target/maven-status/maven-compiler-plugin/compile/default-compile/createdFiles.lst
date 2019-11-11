@@ -1,0 +1,8 @@
+com\mycom\mapper\OrderMapper.class
+com\mycom\mapper\CategoryMapper.class
+com\mycom\mapper\UserMapper.class
+com\mycom\mapper\base\UserBaseMapper.class
+com\mycom\mapper\ProductMapper.class
+com\mycom\mapper\base\CategoryBaseMapper.class
+com\mycom\mapper\base\ProductBaseMapper.class
+com\mycom\mapper\base\OrderBaseMapper.class

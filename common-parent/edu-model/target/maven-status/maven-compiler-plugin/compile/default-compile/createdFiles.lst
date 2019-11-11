@@ -1,0 +1,5 @@
+com\mycom\model\PageBean.class
+com\mycom\model\Order.class
+com\mycom\model\Product.class
+com\mycom\model\Category.class
+com\mycom\model\User.class
