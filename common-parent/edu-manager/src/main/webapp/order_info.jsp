@@ -29,12 +29,12 @@ body {
 	<jsp:include page="/header.jsp"></jsp:include>
 
 	<div class="container">
+		<strong>订单详情</strong>
 		<c:set value="0" var="sum"/>              
-		    <c:forEach items="${Olist}" var="Olist">           
+		    <c:forEach items="${OList}" var="Olist">           
 
 		<div class="row">
 			<div style="margin: 0 auto; margin-top: 10px; width: 950px;">
-				<strong>订单详情</strong>
 				<table class="table table-bordered">
 					<tbody>
 					<tr class="warning">
@@ -103,17 +103,17 @@ body {
 						checked="checked" />工商银行 <img src="${pageContext.request.contextPath}/bank_img/icbc.bmp"
 						align="middle" />&nbsp;&nbsp;&nbsp;&nbsp; <input type="radio"
 						name="pd_FrpId" value="BOC-NET-B2C" />中国银行 <img
-						src="./bank_img/bc.bmp" align="middle" />&nbsp;&nbsp;&nbsp;&nbsp;
+						src="${pageContext.request.contextPath}/bank_img/bc.bmp" align="middle" />&nbsp;&nbsp;&nbsp;&nbsp;
 					<input type="radio" name="pd_FrpId" value="ABC-NET-B2C" />农业银行 <img
-						src="./bank_img/abc.bmp" align="middle" /> <br /> <br /> <input
+						src="${pageContext.request.contextPath}/bank_img/abc.bmp" align="middle" /> <br /> <br /> <input
 						type="radio" name="pd_FrpId" value="BOCO-NET-B2C" />交通银行 <img
-						src="./bank_img/bcc.bmp" align="middle" />&nbsp;&nbsp;&nbsp;&nbsp;
+						src="${pageContext.request.contextPath}/bank_img/bcc.bmp" align="middle" />&nbsp;&nbsp;&nbsp;&nbsp;
 					<input type="radio" name="pd_FrpId" value="PINGANBANK-NET" />平安银行
 					<img src="${pageContext.request.contextPath}/bank_img/pingan.bmp" align="middle" />&nbsp;&nbsp;&nbsp;&nbsp;
 					<input type="radio" name="pd_FrpId" value="CCB-NET-B2C" />建设银行 <img
-						src="./bank_img/ccb.bmp" align="middle" /> <br /> <br /> <input
+						src="${pageContext.request.contextPath}/bank_img/ccb.bmp" align="middle" /> <br /> <br /> <input
 						type="radio" name="pd_FrpId" value="CEB-NET-B2C" />光大银行 <img
-						src="./bank_img/guangda.bmp" align="middle" />&nbsp;&nbsp;&nbsp;&nbsp;
+						src="${pageContext.request.contextPath}/bank_img/guangda.bmp" align="middle" />&nbsp;&nbsp;&nbsp;&nbsp;
 					<input type="radio" name="pd_FrpId" value="CMBCHINA-NET-B2C" />招商银行
 					<img src="${pageContext.request.contextPath}/bank_img/cmb.bmp" align="middle" />
 
@@ -121,8 +121,8 @@ body {
 				<hr />
 				<p style="text-align: right; margin-right: 100px;">
 					<a href="javascript:document.getElementById('orderForm').submit();">
-						<img src="${pageContext.request.contextPath}/images/finalbutton.gif" width="204" height="51"
-						border="0" />
+						<img src="${pageContext.request.contextPath}/images/finalButton.jpg" width="204" height="51"
+							 border="0" />
 					</a>
 				</p>
 				<hr />

@@ -11,7 +11,7 @@
         SELECT * FROM user WHERE username = #{username} AND password = #{password}
     </select>
     <insert id="add">
-        INSERT INTO user VALUES (#{uid} ,#{username} ,#{password} ,#{name} ,#{email} ,#{telephone} ,#{birthday} ,#{sex} ,#{state} ,#{code})
+        INSERT INTO user VALUES (#{uid}, #{username}, #{imgPath}, #{password}, #{name}, #{email}, #{telephone}, #{birthday}, #{sex}, #{state}, #{code})
     </insert>
 
 </mapper>

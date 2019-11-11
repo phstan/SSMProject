@@ -3,6 +3,7 @@ package com.mycom.model;
 public class User {
     private String uid ;
     private String username ;
+    private String imgPath;
     private String password ;
     private String name ;
     private String email ;
@@ -28,6 +29,13 @@ public class User {
         this.username = username;
     }
 
+    public String getImgPath() {
+        return imgPath;
+    }
+
+    public void setImgPath(String imgPath) {
+        this.imgPath = imgPath;
+    }
     public String getPassword() {
         return password;
     }

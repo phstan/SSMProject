@@ -12,7 +12,11 @@ public interface ProductBaseMapper<T> {
 
     public int findCategoryCount(String cid);
 
+    public int findSearchCount(String inputMeg);
+
     public List<T> findCategoryProduct(@Param("cid") String cid, @Param("startIndex") int startIndex, @Param("currentCount") int currentCount);
+
+    public List<T> findSearchProduct(@Param("inputMeg") String inputMeg, @Param("startIndex") int startIndex, @Param("currentCount") int currentCount);
 
     public Product findOneProduct(String pid);
 

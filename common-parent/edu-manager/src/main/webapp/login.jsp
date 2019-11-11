@@ -5,11 +5,72 @@
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>会员登录</title>
+	<style>
+		html {
+			background-color: #E3E3E3;
+			font-size: 14px;
+			color: #000;
+			font-family: '微软雅黑'
+		}
+
+		a, a:hover {
+			text-decoration: none;
+		}
+
+		pre {
+			font-family: '微软雅黑'
+		}
+
+		.box {
+			padding: 20px;
+			background-color: #fff;
+			margin: 50px 100px;
+			border-radius: 5px;
+		}
+
+		.box a {
+			padding-right: 15px;
+		}
+
+		#about_hide {
+			display: none
+		}
+
+		.layer_text {
+			background-color: #fff;
+			padding: 20px;
+		}
+
+		.layer_text p {
+			margin-bottom: 10px;
+			text-indent: 2em;
+			line-height: 23px;
+		}
+
+		.button {
+			display: inline-block;
+			*display: inline;
+			*zoom: 1;
+			line-height: 30px;
+			padding: 0 20px;
+			background-color: #56B4DC;
+			color: #fff;
+			font-size: 14px;
+			border-radius: 3px;
+			cursor: pointer;
+			font-weight: normal;
+		}
+
+		.photos-demo img {
+			width: 200px;
+		}
+	</style>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.min.css" type="text/css" />
-<script src="${pageContext.request.contextPath}/js/jquery-1.11.3.min.js" type="text/javascript"></script>
+<script src="http://cdn.bootcss.com/jquery/1.12.3/jquery.min.js"></script>
 <script src="${pageContext.request.contextPath}/js/bootstrap.min.js" type="text/javascript"></script>
 <!-- 引入自定义css文件 style.css -->
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" type="text/css" />
+<script src="${pageContext.request.contextPath}/js/layer.js"></script>
 
 <style>
 body {
@@ -36,10 +97,28 @@ font {
 }
 </style>
 	<%
+		if("noLogin".equals(request.getSession().getAttribute("noLogin"))){ %>
+
+	<script type="text/javascript">
+		layer.alert('请先登录!', {
+			skin: 'layui-layer-molv' //样式类名
+			,closeBtn: 0
+			,anim: 4 /*动画类型*/
+		})
+	</script>
+
+	<%}else{%>
+	<!-- 没有收到任何错误信息 -->
+	<% }%>
+	<%
 		if("login_error".equals(request.getParameter("message"))){ %>
 
 	<script type="text/javascript">
-		alert("用户名或者密码错误！");
+		layer.alert('用户名或密码错误!', {
+			skin: 'layui-layer-molv' //样式类名
+			,closeBtn: 0
+			,anim: 4 /*动画类型*/
+		})
 	</script>
 
 	<%}else{%>
@@ -53,7 +132,11 @@ function checkForm() {
 	var flag = checkCodeIsTrue ; 
 	console.log(checkCodeIsTrue);
 	if(!flag){
-		alert("验证码输入错误")
+		layer.alert('验证码输入错误!', {
+			skin: 'layui-layer-molv' //样式类名
+			,closeBtn: 0
+			,anim: 4 /*动画类型*/
+		})
 	}
 	return flag ;
 }
@@ -133,8 +216,7 @@ function checkCode(currentObj) {
 							<div class="col-sm-offset-2 col-sm-10">
 								<div class="checkbox">
 									<label> <input type="checkbox"> 自动登录
-									</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <label> <input
-										type="checkbox"> 记住用户名
+									</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <label> <input type="checkbox"> 记住用户名
 									</label>
 								</div>
 							</div>
@@ -142,7 +224,7 @@ function checkCode(currentObj) {
 						<div class="form-group">
 							<div class="col-sm-offset-2 col-sm-10">
 								<input type="submit" width="100" value="登录" name="submit"
-									style="background: url('${pageContext.request.contextPath}/images/login.gif') no-repeat scroll 0 0 rgba(0, 0, 0, 0); height: 35px; width: 100px; color: white;">
+									style="background: url('${pageContext.request.contextPath}/images/login.jpg') no-repeat scroll 0 0 rgba(0, 0, 0, 0); height: 35px; width: 100px; color: white;">
 							</div>
 						</div>
 					</form>

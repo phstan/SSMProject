@@ -13,7 +13,7 @@ public class Product {
     private int num;
     private double subtotal;
     private String oid;
-    //表示商品所属属性
+    //
     private String cid;
 
     public String getPid() {
@@ -88,14 +88,6 @@ public class Product {
         this.pflag = pflag;
     }
 
-    public String getCid() {
-        return cid;
-    }
-
-    public void setCid(String cid) {
-        this.cid = cid;
-    }
-
     public int getNum() {
         return num;
     }
@@ -119,5 +111,12 @@ public class Product {
     public void setOid(String oid) {
         this.oid = oid;
     }
+
+    public String getCid() {
+        return cid;
+    }
+
+    public void setCid(String cid) {
+        this.cid = cid;
+    }
 }
-	

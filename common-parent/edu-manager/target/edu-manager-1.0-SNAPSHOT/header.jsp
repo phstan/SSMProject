@@ -2,12 +2,20 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
+<script src="http://cdn.bootcss.com/jquery/1.12.3/jquery.min.js"></script>
+<script type="text/javascript">
+
+	function subNum1() {
+		var Meg = $("#inputMeg").val() ;
+		location.href = "/page/product.do?inputMeg="+Meg;
+	}
+</script>
 <!-- 登录 注册 购物车... -->
 <div class="container-fluid">
 	<div class="col-md-4">
 	</div>
 	<div class="col-md-5">
-		<img src="${pageContext.request.contextPath}/img/header.png" />
+		<img src="${pageContext.request.contextPath}/img/header.jpg" />
 	</div>
 	<div class="col-md-3" style="padding-top:20px">
 		<ol class="list-inline">
@@ -16,6 +24,7 @@
 				<li><a href="/head/register.do">注册</a></li>
 			</c:if>
 			<c:if test="${session_username != null }">
+				<li><img src="${pageContext.request.contextPath}/upload/${imgPath}" width="40px" height="40px"></li>
 				<li>欢迎你:${session_username }</li>
 				<li><a href="/head/login.do">注销</a></li>
 			</c:if>
@@ -49,9 +58,9 @@
 				</ul>
 				<form class="navbar-form navbar-right" role="search">
 					<div class="form-group">
-						<input type="text" class="form-control" placeholder="Search">
+						<input type="text" id="inputMeg" class="form-control" placeholder="Search" value="${inputMeg}">
 					</div>
-					<button type="submit" class="btn btn-default">Submit</button>
+					<button type="button" class="btn btn-default" onclick="subNum1()">搜索</button>
 				</form>
 			</div>
 		</div>

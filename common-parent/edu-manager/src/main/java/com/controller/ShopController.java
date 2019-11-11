@@ -11,7 +11,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -65,9 +64,11 @@ public class ShopController {
 
     @RequestMapping("findOrder")
     public String findOrder(String oid, HttpServletRequest request) {
-        List<Product> Olist= ps.OfindOne(oid);
-        request.setAttribute("Olist",Olist);
-        System.out.println(Olist);
+        List<Product> OList= ps.OfindOne(oid);
+        List<Category> categoryList = cs.allCategory();
+        request.setAttribute("categoryList", categoryList);
+        request.setAttribute("OList",OList);
+        System.out.println(OList);
         return"order_info";
     }
 

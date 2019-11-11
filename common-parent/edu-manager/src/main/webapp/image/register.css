@@ -71,7 +71,7 @@ div.register .submit {
 	outline: none;
 	blr: expression(this.hideFocus = true);
 	border: none;
-	background: url(../images/register.gif) 0px 0px no-repeat;
+	background: url(../images/register.jpg) 0px 0px no-repeat;
 }
 
 div.register .agreement {

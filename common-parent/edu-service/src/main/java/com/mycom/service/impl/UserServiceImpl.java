@@ -10,9 +10,9 @@ import org.springframework.transaction.annotation.Transactional;
 public class UserServiceImpl extends UserBaseServiceImpl<User> {
 
     @Override
-    public boolean login(String username, String password) {
+    public User login(String username, String password) {
         User user = userMapper.login(username, password);
-        return user == null ? false : true;
+        return user;
     }
 
     @Override

@@ -5,8 +5,6 @@ import com.mycom.service.base.OrderBaseServiceImpl;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.UUID;
-
 
 @Service
 @Transactional
@@ -16,7 +14,6 @@ public class OrderServiceImpl extends OrderBaseServiceImpl<Order> {
     public String add(Order order) {
         Order orderOne = orderMapper.selectOne(order);
         if(orderOne==null){
-            order.setOid(UUID.randomUUID().toString());
             int i = orderMapper.add(order);
             return i == 0 ? "fail" : "success";
         }else {

@@ -39,7 +39,6 @@ public class HeaderController {
         request.setAttribute("cartList", cartList);
         int count = 0;
         for (int i = 0; i <cartList.size() ; i++) {
-            System.out.println(i);
             count+=cartList.get(i).getSubtotal();
         }
         //获取商品种类

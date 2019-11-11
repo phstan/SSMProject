@@ -6,9 +6,7 @@ import com.mycom.service.base.ProductBaseServiceImpl;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 @Service
 @Transactional
@@ -42,11 +40,30 @@ public class ProductServiceImpl extends ProductBaseServiceImpl<Product> {
         //limit起始参数
         pageBean.setStartIndex();
         //product集合
-        Map map = new HashMap();
-        map.put("1",cid);
-        map.put("2",pageBean.getStartIndex());
-        map.put("3",pageBean.getCurrentCount());
         List<Product> productList = productMapper.findCategoryProduct(cid , pageBean.getStartIndex() , pageBean.getCurrentCount());
+        pageBean.setProductList(productList);
+        return pageBean;
+    }
+
+    @Override
+    public PageBean forSearchPage(String inputMeg, int currentPage, int currentCount) {
+        PageBean pageBean = new PageBean();
+        //每页显示条数
+        pageBean.setCurrentCount(currentCount);
+        //总条数
+        int totalCount = productMapper.findSearchCount(inputMeg);
+        if(totalCount==0){
+            return null;
+        }
+        pageBean.setTotalCount(totalCount);
+        //总页面数
+        pageBean.setTotalPage();
+        //当前页面
+        pageBean.setCurrentPage(currentPage);
+        //limit起始参数
+        pageBean.setStartIndex();
+        //product集合
+        List<Product> productList = productMapper.findSearchProduct(inputMeg , pageBean.getStartIndex() , pageBean.getCurrentCount());
         pageBean.setProductList(productList);
         return pageBean;
     }

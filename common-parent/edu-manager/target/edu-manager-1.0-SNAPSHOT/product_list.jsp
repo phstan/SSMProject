@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="view	port" content="width=device-width, initial-scale=1">
 <title>会员登录</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.min.css" type="text/css" />
 <script src="${pageContext.request.contextPath}/js/jquery-1.11.3.min.js" type="text/javascript"></script>
@@ -36,7 +36,7 @@ body {
 	<div class="row" style="width: 1210px; margin: 0 auto;">
 		<div class="col-md-12">
 			<ol class="breadcrumb">
-				<li><a href="/shop/index.do">首页</a>&nbsp;&nbsp;&gt;&gt;&nbsp;&nbsp;${category.cname }</li>
+				<li><a href="/shop/index.do">首页</a>&nbsp;&nbsp;&gt;&gt;&nbsp;&nbsp;${category.cname }${inputMeg}</li>
 			</ol>
 		</div>
 		
@@ -47,7 +47,7 @@ body {
 					width="170" height="170" style="display: inline-block;">
 				</a>
 				<p>
-					<a href="/info/product.doj?pid=${pro.pid }" style='color: green'>${pro.pname }</a>
+					<a href="/info/product.do?pid=${pro.pid }" style='color: green'>${pro.pname }</a>
 				</p>
 				<p>
 					<font color="#FF0000">商城价：&yen;${pro.shop_price }</font>
@@ -66,17 +66,17 @@ body {
 				<li class="disabled"><a href="javascript:void(0);">
 			</c:if>
 			<c:if test="${pageBean.currentPage != 1}">
-				<li><a href="/page/product.do?cid=${cid }&currentPage=${pageBean.currentPage -1}" aria-label="Previous">
+				<li><a href="/page/product.do?cid=${cid }&inputMeg=${inputMeg}&currentPage=${pageBean.currentPage -1}" aria-label="Previous">
 			</c:if>
 			 
 			<span aria-hidden="true">&laquo;</span></a></li>
 					
 			<c:forEach begin="1" end="${pageBean.totalPage }" varStatus="vs">
 				<c:if test="${vs.count == pageBean.currentPage }">
-					<li class="active"><a href="/page/product.do?cid=${cid }&currentPage=${vs.count}">${vs.count}</a></li>
+					<li class="active"><a href="/page/product.do?cid=${cid }&inputMeg=${inputMeg}&currentPage=${vs.count}">${vs.count}</a></li>
 				</c:if>
 				<c:if test="${vs.count != pageBean.currentPage }">
-					<li><a href="/page/product.do?cid=${cid }&currentPage=${vs.count}">${vs.count}</a></li>
+					<li><a href="/page/product.do?cid=${cid }&inputMeg=${inputMeg}&currentPage=${vs.count}">${vs.count}</a></li>
 				</c:if>				
 			</c:forEach>
 			
@@ -84,7 +84,7 @@ body {
 				<li class="disabled"><a href="javascript:void(0);">
 			</c:if>	
 			<c:if test="${pageBean.currentPage != pageBean.totalPage }">
-				<li><a href="/page/product.do?cid=${cid }&currentPage=${pageBean.currentPage +1}" aria-label="Next">
+				<li><a href="/page/product.do?cid=${cid }&inputMeg=${inputMeg}&currentPage=${pageBean.currentPage +1}" aria-label="Next">
 			</c:if>		
 							
 			<span aria-hidden="true">&raquo;</span></a></li>

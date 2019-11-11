@@ -6,11 +6,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>会员注册</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.min.css" type="text/css"/>
-<script src="${pageContext.request.contextPath}/js/jquery-1.11.3.min.js" type="text/javascript"></script>
+<script src="http://cdn.bootcss.com/jquery/1.12.3/jquery.min.js"></script>
 <script src="${pageContext.request.contextPath}/js/bootstrap.min.js" type="text/javascript"></script>
 <!-- 引入自定义css文件 style.css -->
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" type="text/css"/>
-
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" type="text/css" />
+<script src="${pageContext.request.contextPath}/js/layer.js"></script>
 <style>
     body {
         margin-top: 20px;
@@ -27,6 +27,64 @@
         font-size: 18px;
         font-weight: normal;
         padding: 0 10px;
+    }
+    html {
+        background-color: #E3E3E3;
+        font-size: 14px;
+        color: #000;
+        font-family: '微软雅黑'
+    }
+
+    a, a:hover {
+        text-decoration: none;
+    }
+
+    pre {
+        font-family: '微软雅黑'
+    }
+
+    .box {
+        padding: 20px;
+        background-color: #fff;
+        margin: 50px 100px;
+        border-radius: 5px;
+    }
+
+    .box a {
+        padding-right: 15px;
+    }
+
+    #about_hide {
+        display: none
+    }
+
+    .layer_text {
+        background-color: #fff;
+        padding: 20px;
+    }
+
+    .layer_text p {
+        margin-bottom: 10px;
+        text-indent: 2em;
+        line-height: 23px;
+    }
+
+    .button {
+        display: inline-block;
+        *display: inline;
+        *zoom: 1;
+        line-height: 30px;
+        padding: 0 20px;
+        background-color: #56B4DC;
+        color: #fff;
+        font-size: 14px;
+        border-radius: 3px;
+        cursor: pointer;
+        font-weight: normal;
+    }
+
+    .photos-demo img {
+        width: 200px;
     }
 </style>
 <script type="text/javascript">
@@ -56,7 +114,10 @@
     function checkForm() {
         var flag = usernameIsTrue && passwordIsTrue && rePasswordIsTrue && emailIsTrue && checkUsernameIsHave && checkCodeIsTrue;
         if (!flag) {
-            alert("请输入合法完整信息")
+            layer.alert('信息输入错误!', {
+                skin: 'layui-layer-molv' //样式类名
+                ,closeBtn: 0
+            })
         }
         return flag;
     }
@@ -217,8 +278,15 @@
              style="background: #fff; padding: 40px 80px; margin: 30px; border: 7px solid #ccc;">
              会员注册USER REGISTER
             <!-- onsubmit : 表单提交时间 ， 可以控制表单的提交 -->
-            <form class="form-horizontal" onsubmit="return checkForm()" action="/user/registerSure.do" method="post"
+            <form class="form-horizontal" onsubmit="return checkForm()" action="/user/registerSure.do"
+                  enctype="multipart/form-data" method="post"
                   style="margin-top: 5px;">
+                <div class="form-group">
+                    <label for="img" class="col-sm-2 control-label">选择头像</label>
+                    <div class="col-sm-6">
+                        <input type="file" class="form-control" id="img" name="upload"><label></label>
+                    </div>
+                </div>
                 <div class="form-group">
                     <label for="username" class="col-sm-2 control-label">用户名</label>
                     <div class="col-sm-6">
@@ -299,7 +367,7 @@
                 <div class="form-group">
                     <div class="col-sm-offset-2 col-sm-10">
                         <input type="submit" width="100" value="注册" name="submit"
-                               style="background: url('${pageContext.request.contextPath}/images/register.gif') no-repeat scroll 0 0 rgba(0, 0, 0, 0); height: 35px; width: 100px; color: white;">
+                               style="background: url('${pageContext.request.contextPath}/images/register.jpg') no-repeat scroll 0 0 rgba(0, 0, 0, 0); height: 35px; width: 100px; color: white;">
                     </div>
                 </div>
             </form>

@@ -19,24 +19,43 @@ public class ProductPageController {
     private IProductBaseService ps;
     @Autowired
     private ICategoryBaseService cs;
-    @RequestMapping("product")
-    public String pageProduct(HttpServletRequest request){
-        String cid = request.getParameter("cid");
-        int currentPage = 1 ;
-        try {
-            currentPage = Integer.parseInt(request.getParameter("currentPage"));
-        }catch(Exception e) {
 
+    @RequestMapping("product")
+    public String pageProduct(HttpServletRequest request) {
+        String cid = request.getParameter("cid");
+        if(!(cid==null||cid=="")){
+            int currentPage = 1;
+            try {
+                currentPage = Integer.parseInt(request.getParameter("currentPage"));
+            } catch (Exception e) {
+
+            }
+            int currentCount = 12;
+            PageBean pageBean = ps.forPage(cid, currentPage, currentCount);
+            Category category = cs.findOne(cid);
+            List<Category> categoryList = cs.allCategory();
+            request.setAttribute("cid", cid);
+            request.setAttribute("categoryList", categoryList);
+            request.setAttribute("pageBean", pageBean);
+            request.setAttribute("category", category);
+            return "product_list";
+        }else {
+            String inputMeg = request.getParameter("inputMeg");
+            String inputMegs = "%"+inputMeg+"%";
+            int currentPage = 1;
+            try {
+                currentPage = Integer.parseInt(request.getParameter("currentPage"));
+            } catch (Exception e) {
+            }
+            int currentCount = 12;
+            PageBean pageBean = ps.forSearchPage(inputMegs, currentPage, currentCount);
+            List<Category> categoryList = cs.allCategory();
+            request.setAttribute("inputMeg",inputMeg);
+            request.setAttribute("categoryList", categoryList);
+            request.setAttribute("pageBean", pageBean);
+            return "product_list";
         }
-        int currentCount = 12 ;
-        PageBean pageBean = ps.forPage(cid, currentPage, currentCount);
-        Category category = cs.findOne(cid);
-        List<Category> categoryList = cs.allCategory();
-        request.setAttribute("cid", cid);
-        request.setAttribute("categoryList", categoryList);
-        request.setAttribute("pageBean",pageBean);
-        request.setAttribute("category",category);
-        return "product_list";
+
     }
 
 }

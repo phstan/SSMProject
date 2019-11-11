@@ -11,16 +11,30 @@
         SELECT * FROM product ORDER BY pdate DESC LIMIT 0 , 9
     </select>
     <select id="findCategoryCount" parameterType="String" resultType="int">
-        SELECT COUNT(*) FROM product WHERE cid = #{cid}
+        SELECT COUNT(1) FROM product WHERE cid = #{cid}
+    </select>
+    <select id="findSearchCount" parameterType="String" resultType="int">
+        SELECT COUNT(1) FROM `product` WHERE pname LIKE #{inputMeg}
     </select>
     <select id="findCategoryProduct" resultType="com.mycom.model.Product">
         SELECT * FROM product WHERE cid = #{cid} LIMIT #{startIndex} , #{currentCount}
+    </select>
+    <select id="findSearchProduct" resultType="com.mycom.model.Product">
+        SELECT * FROM product WHERE pname LIKE #{inputMeg} LIMIT #{startIndex} , #{currentCount}
     </select>
     <select id="findOneProduct" parameterType="String" resultType="com.mycom.model.Product">
         SELECT * FROM product WHERE pid = #{pid}
     </select>
     <select id="findCartAll" parameterType="String" resultType="com.mycom.model.Product">
         SELECT  product.*, `order`.num,`order`.oid FROM `order` INNER JOIN product ON `order`.pid = product.pid WHERE `order`.username=#{username}
+    </select>
+    <select id="OfindOne" parameterType="string" resultType="com.mycom.model.Product">
+        SELECT `product`.pimage,`product`.pname,`product`.shop_price,`order`.oid,`order`.num FROM
+         `order` INNER JOIN product ON `order`.pid = `product`.pid WHERE 1>2
+        or oid in
+        <foreach item="item" collection="array" open="(" separator="," close=")">
+            #{item}
+        </foreach>
     </select>
 
 </mapper>
