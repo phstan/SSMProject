@@ -22,5 +22,13 @@
     <select id="findCartAll" parameterType="String" resultType="com.mycom.model.Product">
         SELECT  product.*, `order`.num,`order`.oid FROM `order` INNER JOIN product ON `order`.pid = product.pid WHERE `order`.username=#{username}
     </select>
+    <select id="OfindOne" parameterType="string" resultType="com.mycom.model.Product">
+        SELECT `product`.pimage,`product`.pname,`product`.shop_price,`order`.oid,`order`.num FROM
+         `order` INNER JOIN product ON `order`.pid = `product`.pid WHERE 1>2
+        or oid in
+        <foreach item="item" collection="array" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+    </select>
 
 </mapper>

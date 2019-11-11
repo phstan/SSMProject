@@ -65,6 +65,13 @@ public class ProductServiceImpl extends ProductBaseServiceImpl<Product> {
         }
         return productList;
     }
+
+    @Override
+    public List<Product> OfindOne(String oid) {
+        String[] array = oid.split(",");
+        List<Product> Olist= (List<Product>) productMapper.OfindOne(array);
+        return Olist;
+    }
 }
 
 

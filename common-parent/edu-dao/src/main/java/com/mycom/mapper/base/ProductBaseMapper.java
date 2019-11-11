@@ -18,4 +18,6 @@ public interface ProductBaseMapper<T> {
 
     public List<T> findCartAll(@Param("username") String username);
 
+    public List<T> OfindOne(String[] array);
+
 }

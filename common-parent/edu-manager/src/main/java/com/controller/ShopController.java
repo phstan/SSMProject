@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -60,6 +61,14 @@ public class ShopController {
         String username = (String) request.getSession().getAttribute("session_username");
         String result = io.deleteAll(username);
         return "redirect:/head/cart.do";
+    }
+
+    @RequestMapping("findOrder")
+    public String findOrder(String oid, HttpServletRequest request) {
+        List<Product> Olist= ps.OfindOne(oid);
+        request.setAttribute("Olist",Olist);
+        System.out.println(Olist);
+        return"order_info";
     }
 
 }

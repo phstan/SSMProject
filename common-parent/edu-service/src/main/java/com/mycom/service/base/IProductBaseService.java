@@ -11,4 +11,5 @@ public interface IProductBaseService<T> {
     public PageBean forPage(String cid, int currentPage, int currentCount);
     public Product findOne(String pid);
     public List<T> findCartAll(String username);
+    public List<Product> OfindOne(String oid);
 }

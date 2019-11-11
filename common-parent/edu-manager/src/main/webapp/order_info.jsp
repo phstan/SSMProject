@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@  taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -26,40 +27,44 @@ body {
 <body>
 	<!-- 引入header.jsp -->
 	<jsp:include page="/header.jsp"></jsp:include>
-	
+
 	<div class="container">
+		<c:set value="0" var="sum"/>              
+		    <c:forEach items="${Olist}" var="Olist">           
+
 		<div class="row">
 			<div style="margin: 0 auto; margin-top: 10px; width: 950px;">
 				<strong>订单详情</strong>
 				<table class="table table-bordered">
 					<tbody>
-						<tr class="warning">
-							<th colspan="5">订单编号:9005</th>
-						</tr>
-						<tr class="warning">
-							<th>图片</th>
-							<th>商品</th>
-							<th>价格</th>
-							<th>数量</th>
-							<th>小计</th>
-						</tr>
-						<tr class="active">
-							<td width="60" width="40%"><input type="hidden" name="id"
-								value="22"> <img src="${pageContext.request.contextPath}/image/dadonggua.jpg" width="70"
+					<tr class="warning">
+						<th colspan="5">订单编号:${Olist.oid}</th>
+					</tr>
+					<tr class="warning">
+						<th>图片</th>
+						<th>商品</th>
+						<th>价格</th>
+						<th>数量</th>
+						<th>小计</th>
+					</tr>
+					<tr class="active">
+						<td width="60" width="40%"><input type="hidden" name="id"
+														  value="22"> <img
+								src="${pageContext.request.contextPath}/${Olist.pimage}" width="70"
 								height="60"></td>
-							<td width="30%"><a target="_blank"> 有机蔬菜 大冬瓜...</a></td>
-							<td width="20%">￥298.00</td>
-							<td width="10%">5</td>
-							<td width="15%"><span class="subtotal">￥596.00</span></td>
-						</tr>
+						<td width="30%"><a target="_blank">${Olist.pname}</a></td>
+						<td width="20%">￥${Olist.shop_price}</td>
+						<td width="10%">${Olist.num}</td>
+						<td width="15%"><span class="subtotal">￥${Olist.num*Olist.shop_price}</span></td>
+						<c:set value="${sum + Olist.num*Olist.shop_price}" var="sum" ></c:set>
+					</tr>
 					</tbody>
 				</table>
 			</div>
-
-			<div style="text-align: right; margin-right: 120px;">
-				商品金额: <strong style="color: #ff6600;">￥596.00元</strong>
-			</div>
-
+		</div>
+	</c:forEach>
+		<div style="text-align: right; margin-right: 120px;">
+			商品总金额: <strong style="color: #ff6600;">￥<c:out value="${sum}"></c:out>元</strong>
 		</div>
 
 		<div>
